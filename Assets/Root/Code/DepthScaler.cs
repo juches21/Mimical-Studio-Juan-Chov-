@@ -13,7 +13,10 @@ public class DepthScaler : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
+        float t = Mathf.InverseLerp(minY, maxY, transform.position.y);
+        float targetScale = Mathf.Lerp(minScale, maxScale, t);
+        transform.localScale = new Vector3(targetScale, targetScale, targetScale);
     }
 
     // Update is called once per frame

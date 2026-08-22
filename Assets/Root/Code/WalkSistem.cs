@@ -9,11 +9,7 @@ public class WalkSistem : MonoBehaviour
 
 
 
-    [SerializeField] private float minScale = 0.5f;
-    [SerializeField] private float maxScale = 1.2f;
 
-    [SerializeField] private float minY = -5f;
-    [SerializeField] private float maxY = 5f;
 
     private NavMeshAgent NavMeshAgent;
 
@@ -31,9 +27,7 @@ public class WalkSistem : MonoBehaviour
         NavMeshAgent.updateUpAxis = false;
 
 
-        float t = Mathf.InverseLerp(minY, maxY, transform.position.y);
-        float targetScale = Mathf.Lerp(minScale, maxScale, t);
-        transform.localScale = new Vector3(targetScale, targetScale, targetScale);
+ 
     }
 
     // Update is called once per frame
@@ -48,13 +42,13 @@ public class WalkSistem : MonoBehaviour
 
 
          moving = NavMeshAgent.velocity.sqrMagnitude > 0.01f;
-            //Resize();
+        
 
         if (moving)
         {
             animator.SetBool("Walk",true);
         }
-        // animación caminar
+    
         else
         {
             animator.SetBool("Walk", false);
